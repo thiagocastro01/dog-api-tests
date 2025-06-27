@@ -28,7 +28,7 @@ public class BreedsTests extends BaseTest {
     void shouldValidateBreedList() {
         DogApiClient.listBreeds()
                 .then()
-                .spec(ResponseSpecFactory.expectOk())
+                .spec(ResponseSpecFactory.success())
                 .body("message.size()", greaterThan(0))
                 .body("status", equalTo("success"));
     }
@@ -39,7 +39,7 @@ public class BreedsTests extends BaseTest {
     void shouldValidateBreedListContract() {
         DogApiClient.listBreeds()
                 .then()
-                .spec(ResponseSpecFactory.expectOk())
+                .spec(ResponseSpecFactory.success())
                 .body(matchesJsonSchemaInClasspath("schemas/list-all-breeds_schema.json"));
     }
 
@@ -64,7 +64,7 @@ public class BreedsTests extends BaseTest {
 
         DogApiClient.getBreedImages(breed)
                 .then()
-                .spec(ResponseSpecFactory.expectOk())
+                .spec(ResponseSpecFactory.success())
                 .body("status", equalTo("success"))
                 .body("message.size()", greaterThan(0))
                 .body("message[0]", matchesPattern("https?://.*\\.(jpg|jpeg)"));
@@ -75,7 +75,7 @@ public class BreedsTests extends BaseTest {
     void shouldReturn404ForInvalidBreed() {
         DogApiClient.getBreedImages("invalid")
                 .then()
-                .statusCode(401)
+                .statusCode(404)
                 .body("status", equalTo("error"))
                 .body("message", containsString("Breed not found"));
     }
@@ -89,7 +89,7 @@ public class BreedsTests extends BaseTest {
     void shouldReturnValidRandomImage() {
         DogApiClient.getRandomImage()
                 .then()
-                .spec(ResponseSpecFactory.expectOk())
+                .spec(ResponseSpecFactory.success())
                 .body("status", equalTo("success"))
                 .body("message", matchesPattern("https?://.*\\.(jpg|jpeg)"));
     }

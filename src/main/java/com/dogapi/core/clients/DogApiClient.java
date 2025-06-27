@@ -11,9 +11,11 @@ public class DogApiClient {
     public static Response listBreeds() {
         return given().spec(REQ).get("/breeds/list/all");
     }
+
     public static Response getBreedImages(String breed) {
         return given().spec(REQ).get("/breed/{b}/images", breed);
     }
+
     public static Response getRandomImage() {
         return given().spec(REQ).get("/breeds/image/random");
     }
