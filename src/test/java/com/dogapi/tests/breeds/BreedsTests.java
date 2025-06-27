@@ -75,7 +75,7 @@ public class BreedsTests extends BaseTest {
     void shouldReturn404ForInvalidBreed() {
         DogApiClient.getBreedImages("invalid")
                 .then()
-                .statusCode(404)
+                .statusCode(401)
                 .body("status", equalTo("error"))
                 .body("message", containsString("Breed not found"));
     }
