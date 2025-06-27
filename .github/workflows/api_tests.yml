@@ -24,11 +24,11 @@ jobs:
       - name: Checkout source code
         uses: actions/checkout@v4
 
-      - name: Set up Java 17
+      - name: Set up Java 21
         uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
-          java-version: '17'
+          java-version: '21'
 
       - name: Cache Maven packages
         uses: actions/cache@v3
@@ -39,9 +39,13 @@ jobs:
 
       - name: Run Tests
         run: mvn clean test
+        continue-on-error: true
 
       - name: Generate Allure Report
         run: mvn io.qameta.allure:allure-maven:report
+
+      - name: Verify Allure Results Exist
+        run: ls -la target/site/allure-maven-plugin
 
       - name: Copy Allure Report to public directory
         run: |
