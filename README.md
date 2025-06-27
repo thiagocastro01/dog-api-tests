@@ -56,6 +56,23 @@ allure serve target/allure-maven-plugin
 
 ---
 
+## 🚀 Executar via GitHub Actions
+
+Este projeto permite executar os testes diretamente pelo GitHub, sem a necessidade de rodar localmente ou realizar push de código.
+
+### Como fazer:
+
+1. Vá até a aba **Actions** no topo do repositório.
+2. Selecione o workflow `Run all API Tests`.
+3. Clique no botão **Run workflow**.
+4. Mantenha marcada a branch **main**
+5. Confirme com **Run workflow** novamente.
+
+O GitHub irá executar os testes automaticamente no ambiente configurado, e o relatório Allure será gerado e publicado em:
+🔗 [https://thiagocastro01.github.io/dog-api-tests/](https://thiagocastro01.github.io/dog-api-tests/)
+
+> Essa opção é útil para revisores ou usuários externos validarem os testes sem precisar configurar nada em sua máquina.
+
 ## 📄 Relatório Online
 
 Todos os testes são executados automaticamente a cada push na branch `master`.
