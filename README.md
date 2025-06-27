@@ -1,6 +1,7 @@
 # 🐾 Dog API Tests
 
 Este repositório contém uma suíte de testes automatizados criada para validar os principais endpoints da API https://dog.ceo/dog-api
+
 Os testes foram desenvolvidos em Java utilizando RestAssured, JUnit 5 e os relatórios são gerados com Allure Report.
 
 O processo de execução está automatizado via GitHub Actions com deploy contínuo do relatório.
